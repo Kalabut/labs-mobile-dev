@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -23,10 +23,7 @@ class PrimaryButton extends StatelessWidget {
               icon: Icon(icon),
               label: Text(label),
             )
-          : FilledButton(
-              onPressed: onPressed,
-              child: Text(label),
-            ),
+          : FilledButton(onPressed: onPressed, child: Text(label)),
     );
   }
 }

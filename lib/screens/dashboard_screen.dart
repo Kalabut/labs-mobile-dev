@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import '../models/network_node.dart';
-import '../theme/app_theme.dart';
-import '../widgets/network_node_card.dart';
-import '../widgets/network_summary_card.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:lab1_counter/models/network_node.dart';
+import 'package:lab1_counter/theme/app_theme.dart';
+import 'package:lab1_counter/widgets/network_node_card.dart';
+import 'package:lab1_counter/widgets/network_summary_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -48,9 +48,9 @@ class DashboardScreen extends StatelessWidget {
                 Text(
                   'Мережеві вузли (${mockNetworkNodes.length})',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: AppTheme.textSecondary,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    color: AppTheme.textSecondary,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 const SizedBox(height: 12),
                 if (isTablet)
@@ -60,11 +60,11 @@ class DashboardScreen extends StatelessWidget {
                     itemCount: mockNetworkNodes.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                      mainAxisExtent: 136,
-                    ),
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          mainAxisExtent: 136,
+                        ),
                     itemBuilder: (context, index) {
                       return NetworkNodeCard(node: mockNetworkNodes[index]);
                     },
@@ -74,7 +74,7 @@ class DashboardScreen extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: mockNetworkNodes.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 10),
+                    separatorBuilder: (_, _) => const SizedBox(height: 10),
                     itemBuilder: (context, index) {
                       return NetworkNodeCard(node: mockNetworkNodes[index]);
                     },

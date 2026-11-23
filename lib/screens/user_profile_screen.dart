@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
-import '../widgets/primary_button.dart';
-import '../widgets/profile_info_tile.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:lab1_counter/theme/app_theme.dart';
+import 'package:lab1_counter/widgets/primary_button.dart';
+import 'package:lab1_counter/widgets/profile_info_tile.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -21,25 +21,19 @@ class UserProfileScreen extends StatelessWidget {
                   const CircleAvatar(
                     radius: 44,
                     backgroundColor: AppTheme.surface,
-                    child: Icon(
-                      Icons.person,
-                      size: 44,
-                      color: AppTheme.accent,
-                    ),
+                    child: Icon(Icons.person, size: 44, color: AppTheme.accent),
                   ),
                   const SizedBox(height: 12),
                   Text(
                     'Ілля Крупський',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: Theme.of(context).textTheme.titleLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Адміністратор домашньої Mesh-мережі',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppTheme.textSecondary,
-                        ),
+                    style: Theme.of(context).textTheme.bodyMedium
+                        ?.copyWith(color: AppTheme.textSecondary),
                   ),
                   const SizedBox(height: 24),
                   const ProfileInfoTile(

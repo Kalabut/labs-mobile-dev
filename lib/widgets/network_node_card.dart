@@ -1,26 +1,23 @@
-import 'package:flutter/material.dart';
-import '../models/network_node.dart';
-import '../theme/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:lab1_counter/models/network_node.dart';
+import 'package:lab1_counter/theme/app_theme.dart';
 
 class NetworkNodeCard extends StatelessWidget {
-  const NetworkNodeCard({
-    required this.node,
-    super.key,
-  });
+  const NetworkNodeCard({required this.node, super.key});
 
   final NetworkNode node;
 
   Color get _statusColor => switch (node.status) {
-        NodeStatus.online => AppTheme.online,
-        NodeStatus.warning => AppTheme.warning,
-        NodeStatus.offline => AppTheme.offline,
-      };
+    NodeStatus.online => AppTheme.online,
+    NodeStatus.warning => AppTheme.warning,
+    NodeStatus.offline => AppTheme.offline,
+  };
 
   String get _statusLabel => switch (node.status) {
-        NodeStatus.online => 'Online',
-        NodeStatus.warning => 'Високе навантаження',
-        NodeStatus.offline => 'Offline',
-      };
+    NodeStatus.online => 'Online',
+    NodeStatus.warning => 'Високе навантаження',
+    NodeStatus.offline => 'Offline',
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +39,15 @@ class NetworkNodeCard extends StatelessWidget {
                         node.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w600),
                       ),
                       Text(
                         '${node.location} • ${node.ipAddress}',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: AppTheme.textSecondary,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall
+                            ?.copyWith(color: AppTheme.textSecondary),
                       ),
                     ],
                   ),
@@ -70,9 +65,9 @@ class NetworkNodeCard extends StatelessWidget {
                   child: Text(
                     _statusLabel,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: _statusColor,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      color: _statusColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],
@@ -81,14 +76,8 @@ class NetworkNodeCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _TelemetryChip(
-                  icon: Icons.wifi,
-                  label: '${node.rssiDbm} dBm',
-                ),
-                _TelemetryChip(
-                  icon: Icons.speed,
-                  label: '${node.pingMs} мс',
-                ),
+                _TelemetryChip(icon: Icons.wifi, label: '${node.rssiDbm} dBm'),
+                _TelemetryChip(icon: Icons.speed, label: '${node.pingMs} мс'),
                 _TelemetryChip(
                   icon: Icons.bar_chart,
                   label: '${node.channelLoad}%',
@@ -107,10 +96,7 @@ class NetworkNodeCard extends StatelessWidget {
 }
 
 class _TelemetryChip extends StatelessWidget {
-  const _TelemetryChip({
-    required this.icon,
-    required this.label,
-  });
+  const _TelemetryChip({required this.icon, required this.label});
 
   final IconData icon;
   final String label;

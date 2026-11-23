@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:lab1_counter/theme/app_theme.dart';
 
 class NetworkSummaryCard extends StatelessWidget {
   const NetworkSummaryCard({
@@ -64,19 +64,16 @@ class _SummaryMetric extends StatelessWidget {
             value,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(context).textTheme.titleMedium
+                ?.copyWith(color: color, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
             label,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppTheme.textSecondary,
-                ),
+            style: Theme.of(context).textTheme.bodySmall
+                ?.copyWith(color: AppTheme.textSecondary),
           ),
         ],
       ),

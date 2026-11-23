@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:lab1_counter/theme/app_theme.dart';
 
 class ProfileInfoTile extends StatelessWidget {
   const ProfileInfoTile({
@@ -20,9 +20,8 @@ class ProfileInfoTile extends StatelessWidget {
         leading: Icon(icon, color: AppTheme.accent),
         title: Text(
           title,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppTheme.textSecondary,
-              ),
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: AppTheme.textSecondary),
         ),
         subtitle: Text(
           value,

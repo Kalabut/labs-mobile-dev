@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:lab1_counter/theme/app_theme.dart';
 
 class AuthFormShell extends StatelessWidget {
   const AuthFormShell({
@@ -39,17 +39,15 @@ class AuthFormShell extends StatelessWidget {
                 Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context).textTheme.headlineSmall
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   subtitle,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.textSecondary,
-                      ),
+                  style: Theme.of(context).textTheme.bodyMedium
+                      ?.copyWith(color: AppTheme.textSecondary),
                 ),
                 const SizedBox(height: 32),
                 child,
