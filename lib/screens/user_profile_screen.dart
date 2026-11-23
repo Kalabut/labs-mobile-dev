@@ -1,7 +1,7 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:lab1_counter/theme/app_theme.dart';
 import 'package:lab1_counter/widgets/primary_button.dart';
 import 'package:lab1_counter/widgets/profile_info_tile.dart';
+import 'package:material_ui/material_ui.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});

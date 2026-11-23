@@ -1,6 +1,6 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:lab1_counter/models/network_node.dart';
 import 'package:lab1_counter/theme/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
 
 class NetworkNodeCard extends StatelessWidget {
   const NetworkNodeCard({required this.node, super.key});

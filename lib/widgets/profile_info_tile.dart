@@ -1,5 +1,5 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:lab1_counter/theme/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
 
 class ProfileInfoTile extends StatelessWidget {
   const ProfileInfoTile({

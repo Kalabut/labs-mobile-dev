@@ -1,7 +1,7 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:lab1_counter/widgets/auth_form_shell.dart';
 import 'package:lab1_counter/widgets/custom_text_field.dart';
 import 'package:lab1_counter/widgets/primary_button.dart';
+import 'package:material_ui/material_ui.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({super.key});

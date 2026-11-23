@@ -1,8 +1,8 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:lab1_counter/models/network_node.dart';
 import 'package:lab1_counter/theme/app_theme.dart';
 import 'package:lab1_counter/widgets/network_node_card.dart';
 import 'package:lab1_counter/widgets/network_summary_card.dart';
+import 'package:material_ui/material_ui.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
