@@ -1,11 +1,18 @@
-import 'package:lab1_counter/models/network_node.dart';
-import 'package:lab1_counter/theme/app_theme.dart';
+import 'package:lab1_counter/domain/models/network_node.dart';
+import 'package:lab1_counter/ui/theme/app_theme.dart';
 import 'package:material_ui/material_ui.dart';
 
 class NetworkNodeCard extends StatelessWidget {
-  const NetworkNodeCard({required this.node, super.key});
+  const NetworkNodeCard({
+    required this.node,
+    this.onEdit,
+    this.onDelete,
+    super.key,
+  });
 
   final NetworkNode node;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
 
   Color get _statusColor => switch (node.status) {
     NodeStatus.online => AppTheme.online,
@@ -15,15 +22,18 @@ class NetworkNodeCard extends StatelessWidget {
 
   String get _statusLabel => switch (node.status) {
     NodeStatus.online => 'Online',
-    NodeStatus.warning => 'Високе навантаження',
+    NodeStatus.warning => 'Навантаження',
     NodeStatus.offline => 'Offline',
   };
 
   @override
   Widget build(BuildContext context) {
+    final titleStyle = Theme.of(context).textTheme.titleMedium
+        ?.copyWith(fontWeight: FontWeight.w600);
+
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,8 +49,7 @@ class NetworkNodeCard extends StatelessWidget {
                         node.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                        style: titleStyle,
                       ),
                       Text(
                         '${node.location} • ${node.ipAddress}',
@@ -52,7 +61,7 @@ class NetworkNodeCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
@@ -70,9 +79,25 @@ class NetworkNodeCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (onEdit != null || onDelete != null)
+                  PopupMenuButton<String>(
+                    padding: EdgeInsets.zero,
+                    iconSize: 20,
+                    onSelected: (value) {
+                      if (value == 'edit') {
+                        onEdit?.call();
+                      } else if (value == 'delete') {
+                        onDelete?.call();
+                      }
+                    },
+                    itemBuilder: (context) => const [
+                      PopupMenuItem(value: 'edit', child: Text('Редагувати')),
+                      PopupMenuItem(value: 'delete', child: Text('Видалити')),
+                    ],
+                  ),
               ],
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
