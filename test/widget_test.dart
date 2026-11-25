@@ -5,26 +5,37 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:lab1_counter/main.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Full navigation flow across all 4 screens', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const NetPulseApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // 1. LoginScreen
+    expect(find.text('Вхід у NetPulse'), findsOneWidget);
+    await tester.tap(find.text('Немає акаунту? Зареєструватися'));
+    await tester.pumpAndSettle();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // 2. RegistrationScreen
+    expect(find.text('Створити акаунт'), findsOneWidget);
+    await tester.tap(find.text('Зареєструватися'));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // 3. DashboardScreen
+    expect(find.text('NetPulse • Мережа'), findsOneWidget);
+    expect(find.text('Головний роутер'), findsOneWidget);
+    await tester.tap(find.byIcon(Icons.account_circle_outlined));
+    await tester.pumpAndSettle();
+
+    // 4. UserProfileScreen -> Logout back to LoginScreen
+    expect(find.text('Профіль користувача'), findsOneWidget);
+    await tester.tap(find.text('Вийти з акаунту'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Вхід у NetPulse'), findsOneWidget);
   });
 }
