@@ -5,6 +5,8 @@ class CustomTextField extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.icon,
+    this.controller,
+    this.validator,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     super.key,
@@ -13,6 +15,8 @@ class CustomTextField extends StatelessWidget {
   final String label;
   final String hint;
   final IconData icon;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType keyboardType;
 
@@ -23,9 +27,12 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(label, style: Theme.of(context).textTheme.labelLarge),
         const SizedBox(height: 8),
-        TextField(
+        TextFormField(
+          controller: controller,
+          validator: validator,
           obscureText: obscureText,
           keyboardType: keyboardType,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(hintText: hint, prefixIcon: Icon(icon)),
         ),
       ],

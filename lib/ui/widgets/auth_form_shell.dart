@@ -1,4 +1,4 @@
-import 'package:lab1_counter/theme/app_theme.dart';
+import 'package:lab1_counter/ui/theme/app_theme.dart';
 import 'package:material_ui/material_ui.dart';
 
 class AuthFormShell extends StatelessWidget {
